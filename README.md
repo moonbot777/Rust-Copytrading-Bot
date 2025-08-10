@@ -216,7 +216,7 @@ This software is for educational and research purposes. Trading cryptocurrencies
 ## 📞 Support
 
 For support and questions:
-- **Telegram**: @greenfox
+- **Telegram**: [@greenfox](https://t.me/greenfoxfun)
 - **GitHub Issues**: [Create an issue](https://github.com/moonbot777/Copy-trading-bot-rust/issues)
 
 ---
