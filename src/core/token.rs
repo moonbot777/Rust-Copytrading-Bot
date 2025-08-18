@@ -24,7 +24,10 @@ pub async fn get_account_info(
     address: Pubkey,
     account: Pubkey,
 ) -> TokenResult<StateWithExtensionsOwned<Account>> {
-    
+    let account_result = client.get_account_data(&address).await?;
+    let account = Account::try_from_slice(&account_result)?;
+    let extensions = account.extensions.unwrap_or_default();
+    let account = StateWithExtensionsOwned::<Account>::try_from_slice(&account_result)?;
     Ok(account)
 }
 
@@ -33,6 +36,9 @@ pub async fn get_mint_info(
     _keypair: Arc<Keypair>,
     address: Pubkey,
 ) -> TokenResult<StateWithExtensionsOwned<Mint>> {
-
-    mint_result
+    let mint_result = client.get_account_data(&address).await?;
+    let mint = Mint::try_from_slice(&mint_result)?;
+    let extensions = mint.extensions.unwrap_or_default();
+    let mint = StateWithExtensionsOwned::<Mint>::try_from_slice(&mint_result)?;
+    Ok(mint)
 }
